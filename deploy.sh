@@ -18,6 +18,6 @@ git add -A
 git commit -m 'Deploy to gh-pages'
 
 git remote add ${REMOTENAME} ${REMOTE}
-git push --force ${REMOTENAME} main:gh-pages
+git push --force ${REMOTENAME} master:gh-pages
 
 cd -
