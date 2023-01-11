@@ -3,7 +3,7 @@ module.exports = {
   publicPath: process.env.NODE_ENV === 'production'
     ? '/kg-hub-dashboard/'
     : '/',
-  chainWebpack: (config) ==> {
+  chainWebpack: (config) => {
     config.module
       .rule('markdown')
       .test(/\.md$/)
@@ -13,7 +13,7 @@ module.exports = {
       .loader('vmark-loader')
       .end();
   },
-  lintonsave: false,
+  lintOnSave: false,
   pages: {
     index: {
       entry: 'src/main.js',
