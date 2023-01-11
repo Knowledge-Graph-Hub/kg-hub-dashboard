@@ -3,7 +3,7 @@
 set -e
 
 REMOTENAME=${1:-origin}
-REMOTE=`git remote get-url --push $ {REMOTENAME}`
+REMOTE=`git remote get-url --push ${REMOTENAME}`
 
 # build
 npm run build
