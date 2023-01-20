@@ -153,6 +153,7 @@ export default {
       edgeCount: null,
       sourceCount: null,
       releaseDate: '9/01/2020', // TODO
+      graphStats: 'https://kg-hub.berkeleybop.io/kg-idg/current/stats/merged_graph_stats.yaml'
     };
   },
   async mounted() {
@@ -161,7 +162,7 @@ export default {
     // like better
     await new Promise((r) => setTimeout(r, 0));
 
-    await this.getStats();
+    await this.getStats(this.graphStats);
     this.statsFetched = true;
 
     this.nodeCount = this.stats.node_stats.total_nodes.toLocaleString();
@@ -172,11 +173,11 @@ export default {
   },
 
   methods: {
-    async getStats() {
+    async getStats(graphStats) {
       if (this.stats === null
           && window.sessionStorage.getItem('stats') === null
       ) {
-        const stats = await this.fetchStats();
+        const stats = await this.fetchStats(graphStats);
         this.stats = stats;
         window.sessionStorage.setItem('stats', JSON.stringify(stats));
         window.sessionStorage.setItem('releaseDate', JSON.stringify(this.releaseDate));
@@ -186,8 +187,9 @@ export default {
       }
     },
 
-    async fetchStats() {
-      const graphStats = 'https://kg-hub.berkeleybop.io/kg-covid-19/current/stats/merged_graph_stats.yaml'
+    async fetchStats(graphStats) {
+      // 'https://kg-hub.berkeleybop.io/kg-covid-19/current/stats/merged_graph_stats.yaml'
+
       const statsYaml = await axios.get(graphStats);
 
       // get release date from headers
