@@ -153,7 +153,7 @@ export default {
       edgeCount: null,
       sourceCount: null,
       releaseDate: '9/01/2020', // TODO
-      graphStats: 'https://kg-hub.berkeleybop.io/kg-idg/current/stats/merged_graph_stats.yaml'
+      graphStats: 'https://kg-hub.berkeleybop.io/kg-phenio/current/stats/merged_graph_stats.yaml'
     };
   },
   async mounted() {

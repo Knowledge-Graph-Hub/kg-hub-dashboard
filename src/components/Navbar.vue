@@ -9,7 +9,21 @@
       <b-navbar-nav class="ml-auto">
 
         <b-nav-item
-          href="https://github.com/Knowledge-Graph-Hub/kg-covid-19"
+          href="http://kghub.org/"
+          target="_blank"
+        >
+          <font-awesome-icon :icon="['fas', 'home']"/>
+        </b-nav-item>
+
+        <b-nav-item
+          href="http://kghub.io/"
+          target="_blank"
+        >
+          <font-awesome-icon :icon="['fas', 'database']"/>
+        </b-nav-item>
+
+        <b-nav-item
+          href="https://github.com/Knowledge-Graph-Hub"
           target="_blank"
         >
           <font-awesome-icon :icon="['fab', 'github']"/>
@@ -22,12 +36,7 @@
           <font-awesome-icon :icon="['fas', 'hand-sparkles']"/>
         </b-nav-item>
 
-        <b-nav-item
-          href="https://github.com/Knowledge-Graph-Hub/kg-covid-19/wiki"
-          target="_blank"
-        >
-          <font-awesome-icon :icon="['fas', 'home']"/>
-        </b-nav-item>
+
 
       </b-navbar-nav>
     </b-collapse>
