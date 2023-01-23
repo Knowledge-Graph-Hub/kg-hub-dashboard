@@ -4,12 +4,6 @@
 
     <b-navbar-brand to="/">KG-Hub Dashboard</b-navbar-brand>
     
-    <dropd
-      placeholder="Select a KG here."
-      @open="(list, event) => console.log(list, event)"
-      :list="['KG A', 'KG B', 'KG C', 'KG D']"
-    ></dropd>
-
     <b-collapse id="nav-collapse" is-nav>
       <!-- Right aligned nav items -->
       <b-navbar-nav class="ml-auto">

@@ -4,6 +4,12 @@
 
     <sidebar/>
 
+    <dropd
+      placeholder="Select a KG here."
+      @open="(list, event) => console.log(list, event)"
+      :list="['KG-COVID-19', 'KG-IDG', 'KG-Microbe', 'KG-Phenio']"
+    ></dropd>
+
     <div v-show="!statsFetched" class="dash-spinner">
       <h4>Fetching Data</h4>
       <b-spinner
