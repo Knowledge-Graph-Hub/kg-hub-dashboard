@@ -4,16 +4,11 @@
 
     <b-navbar-brand to="/">KG-Hub Dashboard</b-navbar-brand>
     
-    <Dropdown>
-      <template slot="toggler">
-        <button>Toggle</button>
-      </template>
-      <DropdownContent>
-        <DropdownItem>KG A</DropdownItem>
-        <DropdownItem>KG B</DropdownItem>
-        <DropdownItem>KG C</DropdownItem>
-      </DropdownContent>
-    </Dropdown>
+    <dropd
+      placeholder="Select a KG here."
+      @open="(list, event) => console.log(list, event)"
+      :list="['KG A', 'KG B', 'KG C', 'KG D']"
+    ></dropd>
 
     <b-collapse id="nav-collapse" is-nav>
       <!-- Right aligned nav items -->
@@ -47,8 +42,6 @@
           <font-awesome-icon :icon="['fas', 'hand-sparkles']"/>
         </b-nav-item>
 
-
-
       </b-navbar-nav>
     </b-collapse>
   </b-navbar>
@@ -58,18 +51,9 @@
 
 <script>
 
-import Dropdown from '@/components/Dropdown.vue'
-import DropdownContent from '@/components/DropdownContent.vue'
-import DropdownItem from '@/components/DropdownItem.vue'
-
 export default {
   name: 'Navbar',
-  components: {
-    Dropdown,
-    DropdownContent,
-    DropdownItem,
   }
-};
 
 </script>
 
@@ -85,4 +69,5 @@ export default {
     background-repeat: repeat-x !important;
     box-shadow: 0 2px 1px -1px rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 1px 3px 0 rgba(0,0,0,.12);
   }
+
 </style>

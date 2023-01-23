@@ -18,11 +18,13 @@
     "bootstrap": "^4.5.2",
     "bootstrap-vue": "^2.16.0",
     "core-js": "^3.27.2",
+    "dropd-component": "^1.0.1",
     "js-yaml": "^3.14.0",
     "plotly.js-dist": "^1.54.7",
     "vmark": "^1.2.0",
     "vmark-loader": "^1.0.0",
     "vue": "^2.6.11",
+    "vue-dropd": "^1.1.4-alpha.0",
     "vue-router": "^3.2.0",
     "yarn": "^1.22.19"
   },
