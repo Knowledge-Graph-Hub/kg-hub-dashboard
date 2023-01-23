@@ -3,6 +3,17 @@
   <b-navbar id="dash-navbar" class="fixed-top" type="dark" variant="info" fixed="true" toggleable="sm">
 
     <b-navbar-brand to="/">KG-Hub Dashboard</b-navbar-brand>
+    
+    <Dropdown>
+      <template slot="toggler">
+        <button>Toggle</button>
+      </template>
+      <DropdownContent>
+        <DropdownItem>KG A</DropdownItem>
+        <DropdownItem>KG B</DropdownItem>
+        <DropdownItem>KG C</DropdownItem>
+      </DropdownContent>
+    </Dropdown>
 
     <b-collapse id="nav-collapse" is-nav>
       <!-- Right aligned nav items -->
@@ -44,10 +55,20 @@
 
 </template>
 
+
 <script>
+
+import Dropdown from '@/components/Dropdown.vue'
+import DropdownContent from '@/components/DropdownContent.vue'
+import DropdownItem from '@/components/DropdownItem.vue'
 
 export default {
   name: 'Navbar',
+  components: {
+    Dropdown,
+    DropdownContent,
+    DropdownItem,
+  }
 };
 
 </script>
