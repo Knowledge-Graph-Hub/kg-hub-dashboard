@@ -6,9 +6,11 @@
 
     <dropd
       placeholder="Select a KG here."
-      @open="(list, event) => console.log(list, event)"
       :list="['KG-COVID-19', 'KG-IDG', 'KG-Microbe', 'KG-Phenio']"
+      @item-change="currentProj => this.graphStats = (''.concat('https://kg-hub.berkeleybop.io/', currentProj.toLowerCase(), '/current/stats/merged_graph_stats.yaml'))"
     ></dropd>
+
+    {{graphStats || "No stats selected."}}
 
     <div v-show="!statsFetched" class="dash-spinner">
       <h4>Fetching Data</h4>
@@ -158,8 +160,9 @@ export default {
       edgeCategories: null,
       edgeCount: null,
       sourceCount: null,
-      releaseDate: '9/01/2020', // TODO
-      graphStats: 'https://kg-hub.berkeleybop.io/kg-phenio/current/stats/merged_graph_stats.yaml'
+      releaseDate: '9/01/2020',
+      currentProj: 'kg-phenio',
+      graphStats: '',
     };
   },
   async mounted() {
