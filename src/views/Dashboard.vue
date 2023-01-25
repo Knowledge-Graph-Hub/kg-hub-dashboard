@@ -10,8 +10,6 @@
       @item-change="currentProj => onProjectChange(currentProj)"
     ></dropd>
 
-    {{this.graphStats || "No stats selected."}}
-
     <div v-show="!statsFetched" class="dash-spinner">
       <h4>Waiting...</h4>
       <b-spinner
