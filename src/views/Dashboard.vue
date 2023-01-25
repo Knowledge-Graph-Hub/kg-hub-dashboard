@@ -7,10 +7,10 @@
     <dropd
       placeholder="Select a KG here."
       :list="['KG-COVID-19', 'KG-IDG', 'KG-Microbe', 'KG-Phenio']"
-      @item-change="currentProj => this.graphStats = (''.concat('https://kg-hub.berkeleybop.io/', currentProj.toLowerCase(), '/current/stats/merged_graph_stats.yaml'))"
+      @item-change="currentProj => onProjectChange(currentProj)"
     ></dropd>
 
-    {{graphStats || "No stats selected."}}
+    {{this.graphStats || "No stats selected."}}
 
     <div v-show="!statsFetched" class="dash-spinner">
       <h4>Fetching Data</h4>
@@ -161,27 +161,24 @@ export default {
       edgeCount: null,
       sourceCount: null,
       releaseDate: '9/01/2020',
-      currentProj: 'kg-phenio',
+      project: 'kg-phenio',
       graphStats: '',
     };
   },
-  async mounted() {
-    // no idea why but this changes the transition speed from different routes
-    // comment out and go from 'About' to the homepage to determine what you
-    // like better
-    await new Promise((r) => setTimeout(r, 0));
-
-    await this.getStats(this.graphStats);
-    this.statsFetched = true;
-
-    this.nodeCount = this.stats.node_stats.total_nodes.toLocaleString();
-    this.nodeCategories = this.stats.node_stats.node_categories.length.toLocaleString();
-    this.edgeCount = this.stats.edge_stats.total_edges.toLocaleString();
-    this.edgeCategories = this.stats.edge_stats.predicates.length.toLocaleString();
-    this.sourceCount = this.stats.node_stats.provided_by.length.toLocaleString();
-  },
 
   methods: {
+    async onProjectChange(project) {
+      this.graphStats = (''.concat('https://kg-hub.berkeleybop.io/', project.toLowerCase(), '/current/stats/merged_graph_stats.yaml'))
+      await this.getStats(this.graphStats);
+      this.statsFetched = true;
+
+      this.nodeCount = this.stats.node_stats.total_nodes.toLocaleString();
+      this.nodeCategories = this.stats.node_stats.node_categories.length.toLocaleString();
+      this.edgeCount = this.stats.edge_stats.total_edges.toLocaleString();
+      this.edgeCategories = this.stats.edge_stats.predicates.length.toLocaleString();
+      this.sourceCount = this.stats.node_stats.provided_by.length.toLocaleString();
+    },
+
     async getStats(graphStats) {
       if (this.stats === null
           && window.sessionStorage.getItem('stats') === null
