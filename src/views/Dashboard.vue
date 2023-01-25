@@ -180,18 +180,11 @@ export default {
     },
 
     async getStats(graphStats) {
-      if (this.stats === null
-          && window.sessionStorage.getItem('stats') === null
-      ) {
         const stats = await this.fetchStats(graphStats);
         this.stats = stats;
         window.sessionStorage.setItem('stats', JSON.stringify(stats));
         window.sessionStorage.setItem('releaseDate', JSON.stringify(this.releaseDate));
-      } else if (window.sessionStorage.getItem('stats') !== null) {
-        this.stats = JSON.parse(window.sessionStorage.getItem('stats'));
-        this.releaseDate = JSON.parse(window.sessionStorage.getItem('releaseDate'));
-      }
-    },
+      },
 
     async fetchStats(graphStats) {
       // 'https://kg-hub.berkeleybop.io/kg-covid-19/current/stats/merged_graph_stats.yaml'
