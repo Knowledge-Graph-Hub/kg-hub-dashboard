@@ -13,7 +13,7 @@
     {{this.graphStats || "No stats selected."}}
 
     <div v-show="!statsFetched" class="dash-spinner">
-      <h4>Fetching Data</h4>
+      <h4>Waiting...</h4>
       <b-spinner
         class="loading-spinner"
         type="grow"

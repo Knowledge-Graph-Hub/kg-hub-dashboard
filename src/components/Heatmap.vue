@@ -39,6 +39,12 @@ export default {
     this.makeHeatMap('node-heatmap', 'node_stats', 'count_by_category');
     this.makeHeatMap('edge-heatmap', 'edge_stats', 'count_by_predicates');
   },
+  watch: {
+    stats: function () {
+      this.makeHeatMap('node-heatmap', 'node_stats', 'count_by_category');
+      this.makeHeatMap('edge-heatmap', 'edge_stats', 'count_by_predicates');
+    }
+  },
   methods: {
     makeHeatMap(plotDiv, statType, countType) {
       const pivotTable = this.getPivotTable(statType, countType);
