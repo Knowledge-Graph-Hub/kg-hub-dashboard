@@ -10,6 +10,7 @@ import App from './App.vue';
 import router from './router';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
+import Dropd from 'vue-dropd';
 
 library.add(faHome);
 library.add(faGithub);
@@ -27,6 +28,7 @@ Vue.config.productionTip = false;
 Vue.use(BootstrapVue);
 
 Vue.component('font-awesome-icon', FontAwesomeIcon);
+Vue.component('dropd', Dropd);
 
 new Vue({
   router,

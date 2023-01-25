@@ -44,6 +44,12 @@ export default {
     this.getEdgeChart();
     this.getNodeChart();
   },
+  watch: {
+    stats: function () {
+      this.getEdgeChart();
+      this.getNodeChart();
+    }
+  },
   methods: {
     getEdgeChart() {
       const layout = {

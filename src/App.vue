@@ -1,10 +1,7 @@
 <template>
   <div id="app" class="page-wrapper">
-
     <navbar />
-
     <router-view />
-
   </div>
 </template>
 
@@ -15,7 +12,7 @@ import Navbar from '@/components/Navbar.vue';
 export default {
   name: 'App',
   components: {
-    Navbar
+    Navbar,
   },
 };
 

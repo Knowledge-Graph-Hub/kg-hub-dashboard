@@ -31,6 +31,11 @@ export default {
   mounted() {
     this.makeSankey();
   },
+  watch: {
+    stats: function () {
+      this.makeSankey();
+    }
+  },
   methods: {
     makeSankey() {
       // Reference code

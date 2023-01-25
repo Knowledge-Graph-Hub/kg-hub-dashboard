@@ -4,8 +4,14 @@
 
     <sidebar/>
 
+    <dropd
+      placeholder="Select a KG here."
+      :list="['KG-COVID-19', 'KG-IDG', 'KG-Microbe', 'KG-Phenio']"
+      @item-change="currentProj => onProjectChange(currentProj)"
+    ></dropd>
+
     <div v-show="!statsFetched" class="dash-spinner">
-      <h4>Fetching Data</h4>
+      <h4>Waiting...</h4>
       <b-spinner
         class="loading-spinner"
         type="grow"
@@ -152,42 +158,35 @@ export default {
       edgeCategories: null,
       edgeCount: null,
       sourceCount: null,
-      releaseDate: '9/01/2020', // TODO
+      releaseDate: '9/01/2020',
+      project: 'kg-phenio',
+      graphStats: '',
     };
-  },
-  async mounted() {
-    // no idea why but this changes the transition speed from different routes
-    // comment out and go from 'About' to the homepage to determine what you
-    // like better
-    await new Promise((r) => setTimeout(r, 0));
-
-    await this.getStats();
-    this.statsFetched = true;
-
-    this.nodeCount = this.stats.node_stats.total_nodes.toLocaleString();
-    this.nodeCategories = this.stats.node_stats.node_categories.length.toLocaleString();
-    this.edgeCount = this.stats.edge_stats.total_edges.toLocaleString();
-    this.edgeCategories = this.stats.edge_stats.predicates.length.toLocaleString();
-    this.sourceCount = this.stats.node_stats.provided_by.length.toLocaleString();
   },
 
   methods: {
-    async getStats() {
-      if (this.stats === null
-          && window.sessionStorage.getItem('stats') === null
-      ) {
-        const stats = await this.fetchStats();
+    async onProjectChange(project) {
+      this.graphStats = (''.concat('https://kg-hub.berkeleybop.io/', project.toLowerCase(), '/current/stats/merged_graph_stats.yaml'))
+      await this.getStats(this.graphStats);
+      this.statsFetched = true;
+
+      this.nodeCount = this.stats.node_stats.total_nodes.toLocaleString();
+      this.nodeCategories = this.stats.node_stats.node_categories.length.toLocaleString();
+      this.edgeCount = this.stats.edge_stats.total_edges.toLocaleString();
+      this.edgeCategories = this.stats.edge_stats.predicates.length.toLocaleString();
+      this.sourceCount = this.stats.node_stats.provided_by.length.toLocaleString();
+    },
+
+    async getStats(graphStats) {
+        const stats = await this.fetchStats(graphStats);
         this.stats = stats;
         window.sessionStorage.setItem('stats', JSON.stringify(stats));
         window.sessionStorage.setItem('releaseDate', JSON.stringify(this.releaseDate));
-      } else if (window.sessionStorage.getItem('stats') !== null) {
-        this.stats = JSON.parse(window.sessionStorage.getItem('stats'));
-        this.releaseDate = JSON.parse(window.sessionStorage.getItem('releaseDate'));
-      }
-    },
+      },
 
-    async fetchStats() {
-      const graphStats = 'https://kg-hub.berkeleybop.io/kg-covid-19/current/stats/merged_graph_stats.yaml'
+    async fetchStats(graphStats) {
+      // 'https://kg-hub.berkeleybop.io/kg-covid-19/current/stats/merged_graph_stats.yaml'
+
       const statsYaml = await axios.get(graphStats);
 
       // get release date from headers
