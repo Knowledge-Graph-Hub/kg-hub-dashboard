@@ -6,7 +6,7 @@
 
     <dropd
       placeholder="Select a KG here."
-      :list="['KG-COVID-19', 'KG-IDG', 'KG-Microbe', 'KG-Phenio']"
+      :list="['KG-COVID-19', 'KG-IDG', 'KG-Microbe', 'KG-Monarch', 'KG-Phenio']"
       @item-change="currentProj => onProjectChange(currentProj)"
     ></dropd>
 
