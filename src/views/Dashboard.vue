@@ -176,7 +176,7 @@ export default {
       this.edgeCategories = this.stats.edge_stats.predicates.length.toLocaleString();
       this.sourceCount = this.stats.node_stats.provided_by.length.toLocaleString();
 
-      ("#sankey-diagram").load(" #sankey-diagram > *");
+      //("#sankey-diagram").load(" #sankey-diagram > *");
 
     },
 
