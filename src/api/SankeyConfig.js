@@ -14,7 +14,7 @@ export default
       },
       "orientation": "h",
       "valueformat": ".0f",
-      "valuesuffix": "TWh",
+      "valuesuffix": " items",
       "node": {
         "pad": 35,
         "thickness": 15,
@@ -144,7 +144,7 @@ export default
     margin: {
       l: 0, r: 10, t: 30, b: 20
     },
-    "width": 1100,
+    "width": 1200,
     "height": 772,
     "font": {
       "size": 12
