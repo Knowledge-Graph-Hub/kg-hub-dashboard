@@ -33,7 +33,7 @@ export default {
   },
   watch: {
     stats: function () {
-      this.makeSankey();
+      this.redrawSankey();
     }
   },
   methods: {
@@ -123,6 +123,9 @@ export default {
         }
       });
       Plotly.newPlot('sankey-diagram', sankeyConfig);
+    },
+    redrawSankey() {
+      Plotly.redraw('sankey-diagram');
     }
   }
 };
