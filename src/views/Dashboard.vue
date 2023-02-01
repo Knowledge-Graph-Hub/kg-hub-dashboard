@@ -73,29 +73,6 @@
             </b-row>
           </b-card>
 
-          <b-card class="card-shadow border-left-success" align="left">
-            <b-row align-v="center">
-              <b-col cols="9">
-                <b-card-text>
-                  <div class="card-title source-title">
-                    Sources
-                  </div>
-                  <div class="overview-text">
-                    {{sourceCount}}
-                    <br><br>
-                  </div>
-                </b-card-text>
-              </b-col>
-              <b-col>
-                <font-awesome-icon
-                  :icon="['fas', 'database']"
-                  :style="{ color: 'grey' }"
-                  size="2x"
-                />
-              </b-col>
-            </b-row>
-          </b-card>
-
           <b-card class="card-shadow border-left-warning" align="left">
             <b-row align-v="center">
               <b-col cols="9">
@@ -174,9 +151,6 @@ export default {
       this.nodeCategories = this.stats.node_stats.node_categories.length.toLocaleString();
       this.edgeCount = this.stats.edge_stats.total_edges.toLocaleString();
       this.edgeCategories = this.stats.edge_stats.predicates.length.toLocaleString();
-      this.sourceCount = this.stats.node_stats.provided_by.length.toLocaleString();
-
-      //("#sankey-diagram").load(" #sankey-diagram > *");
 
     },
 

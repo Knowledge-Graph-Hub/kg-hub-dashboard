@@ -22,6 +22,19 @@
         <div id="edge-categories" class="chart"></div>
       </b-card>
 
+      <b-card class="card-shadow" header-tag="header" align="center">
+        <template v-slot:header>
+          <div class="card-title graph-title">
+            Sources
+          </div>
+        </template>
+        <div class="overview-text">
+                  {{sourceCount}}
+                  <br><br>
+        </div>
+        <div id="source-counts" class="chart"></div>
+      </b-card>
+
     </b-card-group>
 
   </div>
@@ -40,17 +53,28 @@ export default {
       required: true,
     },
   },
+  data() {
+    return {
+      sourceCount: null,
+    };
+  },
   mounted() {
+    this.getSourceCounts();
     this.getEdgeChart();
     this.getNodeChart();
   },
   watch: {
     stats: function () {
+      this.getSourceCounts();
       this.getEdgeChart();
       this.getNodeChart();
     }
   },
   methods: {
+    getSourceCounts() {
+      this.sourceCount = this.stats.node_stats.provided_by.length.toLocaleString();
+    },
+
     getEdgeChart() {
       const layout = {
         height: 450,
@@ -222,7 +246,7 @@ export default {
   }
 
   .first-card {
-    margin-right: 100px !important;
+    margin-right: 10px !important;
   }
 
   .graph-title {
