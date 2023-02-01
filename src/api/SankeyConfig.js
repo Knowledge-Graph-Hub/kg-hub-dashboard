@@ -144,10 +144,10 @@ export default
     margin: {
       l: 0, r: 10, t: 30, b: 20
     },
-    "width": 1200,
-    "height": 772,
+    // "width": 1200,
+    "height": 800,
     "font": {
-      "size": 12
+      "size": 14
     },
     /* "updatemenus": [
       {
